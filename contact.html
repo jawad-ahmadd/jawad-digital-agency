@@ -152,7 +152,8 @@
             // Your Service and Template IDs
             emailjs.sendForm('service_8ogvw45', 'template_zlvmtuw', this)
                 .then(function() {
-                    alert("Zabardast! Your message has been sent to Jawad.");
+                    // "Zabardast!" erased as requested
+                    alert("Your message has been sent to Jawad.");
                     submitBtn.innerText = "SEND INQUIRY";
                     submitBtn.disabled = false;
                     contactForm.reset();
