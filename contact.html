@@ -14,7 +14,6 @@
             background: linear-gradient(145deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
             border: 1px solid rgba(255, 255, 255, 0.05); 
         }
-        /* Custom scrollbar for premium feel */
         ::-webkit-scrollbar { width: 5px; }
         ::-webkit-scrollbar-track { background: #000; }
         ::-webkit-scrollbar-thumb { background: #ca8a04; border-radius: 10px; }
@@ -74,35 +73,23 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div class="legal-card p-10 md:p-14 rounded-[40px] shadow-2xl">
                 <h3 class="text-white font-black uppercase italic text-xl mb-10 border-l-4 border-yellow-600 pl-4">Drop a Message</h3>
-                <form class="space-y-6">
-                    <input type="text" placeholder="FULL NAME" class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl focus:border-yellow-600 outline-none text-[10px] font-bold tracking-widest uppercase text-white">
-                    <input type="email" placeholder="EMAIL ADDRESS" class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl focus:border-yellow-600 outline-none text-[10px] font-bold tracking-widest uppercase text-white">
-                    <textarea rows="5" placeholder="TELL US ABOUT YOUR PROJECT" class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl focus:border-yellow-600 outline-none text-[10px] font-bold tracking-widest uppercase text-white"></textarea>
-                    <button class="w-full bg-yellow-600 text-black py-5 rounded-2xl font-black uppercase text-[10px] tracking-widest hover:bg-white transition-all shadow-lg shadow-yellow-600/10">Send Inquiry</button>
+                <form id="contact-form" class="space-y-6">
+                    <input type="text" name="from_name" placeholder="FULL NAME" required class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl focus:border-yellow-600 outline-none text-[10px] font-bold tracking-widest uppercase text-white">
+                    <input type="email" name="reply_to" placeholder="EMAIL ADDRESS" required class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl focus:border-yellow-600 outline-none text-[10px] font-bold tracking-widest uppercase text-white">
+                    <textarea name="message" rows="5" placeholder="TELL US ABOUT YOUR PROJECT" required class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl focus:border-yellow-600 outline-none text-[10px] font-bold tracking-widest uppercase text-white"></textarea>
+                    <button type="submit" id="submit-btn" class="w-full bg-yellow-600 text-black py-5 rounded-2xl font-black uppercase text-[10px] tracking-widest hover:bg-white transition-all shadow-lg shadow-yellow-600/10">Send Inquiry</button>
                 </form>
             </div>
 
             <div class="legal-card p-10 md:p-14 rounded-[40px] shadow-2xl flex flex-col items-center justify-center text-center">
                 <h2 class="text-3xl font-black text-white uppercase italic mb-10">Book A Call</h2>
-                
                 <div class="w-full border-2 border-dashed border-yellow-600/20 rounded-[35px] p-12 bg-black/40 group hover:border-yellow-600/50 transition-all flex flex-col items-center">
                     <div class="w-20 h-20 bg-yellow-600/10 rounded-full flex items-center justify-center mb-8">
                         <i class="fa-brands fa-whatsapp text-5xl text-yellow-600"></i>
                     </div>
                     <h3 class="text-white font-black uppercase text-xl mb-4 italic">Fast-Track Strategy</h3>
-                    <p class="text-gray-500 text-[11px] font-bold uppercase tracking-[0.2em] leading-loose max-w-xs">
-                        Talk to Jawad directly on WhatsApp to schedule your project session.
-                    </p>
-                    
-                    <a href="https://wa.me/923117558876" target="_blank" class="mt-12 bg-yellow-600 text-black px-12 py-5 rounded-full text-[11px] font-black uppercase tracking-[0.2em] hover:bg-white transition-all shadow-xl">
-                        Book Appointment
-                    </a>
-                </div>
-
-                <div class="mt-10 flex items-center space-x-6 text-[10px] font-black uppercase tracking-widest text-gray-600">
-                    <span>Response: <span class="text-yellow-600">Fast</span></span>
-                    <span class="text-gray-800">|</span>
-                    <a href="https://www.linkedin.com/in/jawad-ahmad-62251b388/" class="hover:text-white transition-colors">LinkedIn</a>
+                    <p class="text-gray-500 text-[11px] font-bold uppercase tracking-[0.2em] leading-loose max-w-xs">Talk to Jawad directly on WhatsApp to schedule your project session.</p>
+                    <a href="https://wa.me/923117558876" target="_blank" class="mt-12 bg-yellow-600 text-black px-12 py-5 rounded-full text-[11px] font-black uppercase tracking-[0.2em] hover:bg-white transition-all shadow-xl">Book Appointment</a>
                 </div>
             </div>
         </div>
@@ -140,13 +127,44 @@
                 </div>
             </div>
             <div class="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center space-y-4 text-[9px] uppercase tracking-[0.4em] text-gray-600 font-bold">
-                <p>© 2025 JAWAD DIGITAL HUB. ALL RIGHTS RESERVED.</p>
+                <p>© 2026 JAWAD DIGITAL HUB. ALL RIGHTS RESERVED.</p>
                 <a href="#" class="hover:text-white">Contact Information</a>
             </div>
         </div>
     </footer>
 
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
+        (function() {
+            // Your Public Key
+            emailjs.init("fafn6LvnHZMSQWUhZ"); 
+        })();
+
+        const contactForm = document.getElementById('contact-form');
+        const submitBtn = document.getElementById('submit-btn');
+
+        contactForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            submitBtn.innerText = "SENDING...";
+            submitBtn.disabled = true;
+
+            // Your Service and Template IDs
+            emailjs.sendForm('service_8ogvw45', 'template_zlvmtuw', this)
+                .then(function() {
+                    alert("Zabardast! Your message has been sent to Jawad.");
+                    submitBtn.innerText = "SEND INQUIRY";
+                    submitBtn.disabled = false;
+                    contactForm.reset();
+                }, function(error) {
+                    alert("Opps! Something went wrong. Please try again.");
+                    console.log('FAILED...', error);
+                    submitBtn.innerText = "SEND INQUIRY";
+                    submitBtn.disabled = false;
+                });
+        });
+
+        // Mobile Menu Logic
         const openBtn = document.getElementById('open-menu');
         const closeBtn = document.getElementById('close-menu');
         const sideDrawer = document.getElementById('side-drawer');
