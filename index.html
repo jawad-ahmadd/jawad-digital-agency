@@ -390,71 +390,71 @@
 
         </div>
     </div>
-        <section id="faq" class="py-32 bg-black relative overflow-hidden">
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-yellow-600/5 rounded-full blur-[120px] pointer-events-none"></div>
-
-    <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+<section id="faq" class="py-32 bg-black relative">
+    <div class="max-w-7xl mx-auto px-6 md:px-12">
         <div class="mb-20">
-            <p class="text-yellow-600 uppercase tracking-[0.5em] text-[10px] font-black mb-4">Questions & Answers</p>
-            <h2 class="text-5xl md:text-8xl font-black text-white uppercase italic leading-none">FA<span class="text-gray-800">QS.</span></h2>
+            <h2 class="text-5xl md:text-8xl font-black text-white uppercase italic leading-none">
+                Common <br> <span class="text-gray-800">Queries.</span>
+            </h2>
+            <div class="h-1 w-24 bg-yellow-600 mt-8"></div>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
-            <div class="lg:col-span-4">
-                <p class="text-gray-500 text-[11px] font-bold uppercase tracking-widest leading-loose max-w-xs">
-                    Everything you need to know about partnering with Jawad Hub for your next digital evolution.
-                </p>
-                <div class="mt-10">
-                    <a href="contact.html" class="text-yellow-600 text-[10px] font-black uppercase tracking-[0.3em] hover:text-white transition-colors flex items-center group">
-                        Still have questions? 
-                        <span class="ml-4 group-hover:translate-x-2 transition-transform">→</span>
-                    </a>
-                </div>
-            </div>
-
-            <div class="lg:col-span-8 space-y-4">
-                <div class="legal-card rounded-[30px] border border-white/5 overflow-hidden transition-all duration-500 hover:border-yellow-600/20">
-                    <button class="w-full p-8 text-left flex justify-between items-center group" onclick="toggleFAQ(this)">
-                        <span class="text-[12px] md:text-sm font-black uppercase tracking-widest text-white group-hover:text-yellow-500 transition-colors">How do we start a project?</span>
-                        <div class="w-8 h-8 rounded-full border border-yellow-600/20 flex items-center justify-center group-hover:border-yellow-600 transition-all">
-                            <i class="fa-solid fa-plus text-[10px] text-yellow-600 transition-transform duration-500"></i>
-                        </div>
-                    </button>
-                    <div class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out px-8">
-                        <p class="pb-8 text-gray-500 text-[11px] font-bold uppercase tracking-widest leading-loose">
-                            Simply click "Let's Talk" or message via WhatsApp. We'll start with a brief strategy call to understand your goals and then provide a custom roadmap for your project.
-                        </p>
+        <div class="grid grid-cols-1 gap-6 max-w-4xl">
+            
+            <div class="legal-card rounded-[30px] border border-white/5 transition-all duration-500">
+                <button class="w-full p-8 md:p-10 text-left flex justify-between items-center group outline-none" onclick="toggleFAQ(this)">
+                    <span class="text-[12px] md:text-sm font-black uppercase tracking-[0.2em] text-white group-hover:text-yellow-500 transition-colors">
+                        01. How do we start a project together?
+                    </span>
+                    <div class="faq-icon w-10 h-10 rounded-full border border-yellow-600/20 flex items-center justify-center transition-all group-hover:border-yellow-600">
+                        <i class="fa-solid fa-chevron-down text-yellow-600 text-xs transition-transform duration-500"></i>
                     </div>
-                </div>
-
-                <div class="legal-card rounded-[30px] border border-white/5 overflow-hidden transition-all duration-500 hover:border-yellow-600/20">
-                    <button class="w-full p-8 text-left flex justify-between items-center group" onclick="toggleFAQ(this)">
-                        <span class="text-[12px] md:text-sm font-black uppercase tracking-widest text-white group-hover:text-yellow-500 transition-colors">Do you work with international clients?</span>
-                        <div class="w-8 h-8 rounded-full border border-yellow-600/20 flex items-center justify-center group-hover:border-yellow-600 transition-all">
-                            <i class="fa-solid fa-plus text-[10px] text-yellow-600 transition-transform duration-500"></i>
-                        </div>
-                    </button>
-                    <div class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out px-8">
-                        <p class="pb-8 text-gray-500 text-[11px] font-bold uppercase tracking-widest leading-loose">
-                            Yes! Jawad Hub operates globally. We use professional communication tools to ensure seamless collaboration regardless of your time zone.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="legal-card rounded-[30px] border border-white/5 overflow-hidden transition-all duration-500 hover:border-yellow-600/20">
-                    <button class="w-full p-8 text-left flex justify-between items-center group" onclick="toggleFAQ(this)">
-                        <span class="text-[12px] md:text-sm font-black uppercase tracking-widest text-white group-hover:text-yellow-500 transition-colors">What is the payment structure?</span>
-                        <div class="w-8 h-8 rounded-full border border-yellow-600/20 flex items-center justify-center group-hover:border-yellow-600 transition-all">
-                            <i class="fa-solid fa-plus text-[10px] text-yellow-600 transition-transform duration-500"></i>
-                        </div>
-                    </button>
-                    <div class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out px-8">
-                        <p class="pb-8 text-gray-500 text-[11px] font-bold uppercase tracking-widest leading-loose">
-                            Typically, we work on a 50% upfront and 50% upon completion model. For long-term projects, we can also set up milestone-based payments.
+                </button>
+                <div class="faq-answer max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                    <div class="px-8 md:px-10 pb-10">
+                        <p class="text-gray-500 text-[11px] font-bold uppercase tracking-widest leading-loose border-t border-white/5 pt-6">
+                            Simply reach out via the contact form or WhatsApp. We’ll schedule a strategy call to discuss your vision, followed by a detailed proposal and project roadmap.
                         </p>
                     </div>
                 </div>
             </div>
+
+            <div class="legal-card rounded-[30px] border border-white/5 transition-all duration-500">
+                <button class="w-full p-8 md:p-10 text-left flex justify-between items-center group outline-none" onclick="toggleFAQ(this)">
+                    <span class="text-[12px] md:text-sm font-black uppercase tracking-[0.2em] text-white group-hover:text-yellow-500 transition-colors">
+                        02. What is the typical turnaround time?
+                    </span>
+                    <div class="faq-icon w-10 h-10 rounded-full border border-yellow-600/20 flex items-center justify-center transition-all group-hover:border-yellow-600">
+                        <i class="fa-solid fa-chevron-down text-yellow-600 text-xs transition-transform duration-500"></i>
+                    </div>
+                </button>
+                <div class="faq-answer max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                    <div class="px-8 md:px-10 pb-10">
+                        <p class="text-gray-500 text-[11px] font-bold uppercase tracking-widest leading-loose border-t border-white/5 pt-6">
+                            Timelines vary based on scope. Small branding or UI tasks take 5-7 days, while full-scale digital platforms typically take 4-6 weeks to ensure perfection.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="legal-card rounded-[30px] border border-white/5 transition-all duration-500">
+                <button class="w-full p-8 md:p-10 text-left flex justify-between items-center group outline-none" onclick="toggleFAQ(this)">
+                    <span class="text-[12px] md:text-sm font-black uppercase tracking-[0.2em] text-white group-hover:text-yellow-500 transition-colors">
+                        03. Do you provide ongoing site maintenance?
+                    </span>
+                    <div class="faq-icon w-10 h-10 rounded-full border border-yellow-600/20 flex items-center justify-center transition-all group-hover:border-yellow-600">
+                        <i class="fa-solid fa-chevron-down text-yellow-600 text-xs transition-transform duration-500"></i>
+                    </div>
+                </button>
+                <div class="faq-answer max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                    <div class="px-8 md:px-10 pb-10">
+                        <p class="text-gray-500 text-[11px] font-bold uppercase tracking-widest leading-loose border-t border-white/5 pt-6">
+                            Yes. We don't just build and leave. Jawad Hub offers monthly maintenance and support packages to keep your platform secure, updated, and performing at its peak.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
@@ -718,28 +718,31 @@ aiSend.onclick = async () => {
 };
 
 aiInput.onkeypress = (e) => { if(e.key === 'Enter') aiSend.click(); };
-        function toggleFAQ(button) {
-    const content = button.nextElementSibling;
+function toggleFAQ(button) {
+    const answer = button.nextElementSibling;
     const icon = button.querySelector('i');
-    
-    // Close other open FAQs
-    document.querySelectorAll('#faq .max-h-[1000px]').forEach(el => {
-        if (el !== content) {
+    const parentCard = button.parentElement;
+
+    // Pehle se khulay huay baki FAQs ko band karne ke liye (Optional)
+    document.querySelectorAll('.faq-answer').forEach(el => {
+        if (el !== answer) {
             el.style.maxHeight = null;
+            el.parentElement.classList.remove('border-yellow-600/30');
             el.previousElementSibling.querySelector('i').style.transform = 'rotate(0deg)';
         }
     });
 
     // Toggle current FAQ
-    if (content.style.maxHeight) {
-        content.style.maxHeight = null;
+    if (answer.style.maxHeight) {
+        answer.style.maxHeight = null;
         icon.style.transform = 'rotate(0deg)';
+        parentCard.classList.remove('border-yellow-600/30');
     } else {
-        content.style.maxHeight = content.scrollHeight + "px";
-        icon.style.transform = 'rotate(45deg)';
+        answer.style.maxHeight = answer.scrollHeight + "px";
+        icon.style.transform = 'rotate(180deg)';
+        parentCard.classList.add('border-yellow-600/30');
     }
 }
-        
     </script>
 </body>
 </html>
