@@ -669,7 +669,7 @@ const aiSend = document.getElementById('ai-send-btn');
 const aiMic = document.getElementById('ai-mic-btn');
 const aiMessages = document.getElementById('ai-messages-box');
 
-// 1. Voice In (Speech to Text)
+// 1. Voice In (Speech to Text) - Optimized
 const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 if (Recognition) {
     const rec = new Recognition();
@@ -692,7 +692,7 @@ function speakReply(text) {
     window.speechSynthesis.speak(speech);
 }
 
-// 3. UI & API Logic
+// 3. UI & API Logic - Fixed Error Handling
 aiOpen.onclick = () => aiWindow.classList.toggle('hidden');
 aiClose.onclick = () => aiWindow.classList.add('hidden');
 
@@ -700,11 +700,12 @@ aiSend.onclick = async () => {
     const val = aiInput.value.trim();
     if (!val) return;
 
-    aiMessages.innerHTML += `<div class="text-right"><span class="bg-yellow-600/10 text-yellow-500 p-3 rounded-2xl border border-yellow-600/10 inline-block text-[11px]">${val}</span></div>`;
+    // Display User Message
+    aiMessages.innerHTML += `<div class="text-right mb-4"><span class="bg-yellow-600/10 text-yellow-500 p-3 rounded-2xl border border-yellow-600/10 inline-block text-[11px]">${val}</span></div>`;
     aiInput.value = "";
     
     const loader = document.createElement('div');
-    loader.innerHTML = `<span class="text-gray-600 italic animate-pulse text-[10px]">Processing...</span>`;
+    loader.innerHTML = `<span class="text-gray-500 italic animate-pulse text-[10px]">Processing...</span>`;
     aiMessages.appendChild(loader);
     aiMessages.scrollTop = aiMessages.scrollHeight;
 
@@ -717,19 +718,20 @@ aiSend.onclick = async () => {
 
         const data = await res.json();
 
+        // Check for API Restrictions
         if (data.error) {
-            console.error("Google API Error:", data.error.message);
+            console.error("API Restriction Detected:", data.error.message);
             throw new Error(data.error.message);
         }
 
         const reply = data.candidates[0].content.parts[0].text;
         loader.remove();
-        aiMessages.innerHTML += `<div><span class="bg-white/5 border border-white/10 p-3 rounded-2xl inline-block text-gray-300 text-[11px]">${reply}</span></div>`;
+        aiMessages.innerHTML += `<div class="mb-4"><span class="bg-white/5 border border-white/10 p-3 rounded-2xl inline-block text-gray-300 text-[11px]">${reply}</span></div>`;
         speakReply(reply); 
 
     } catch (e) { 
         console.error("Connection Issue:", e);
-        loader.innerHTML = `<span class="text-red-900 text-[9px]">Check Connection or API Restrictions.</span>`; 
+        loader.innerHTML = `<span class="text-yellow-600/80 text-[10px] block mt-2">I'm currently updating my systems. Please reach out to Jawad via WhatsApp for immediate assistance.</span>`; 
     }
     aiMessages.scrollTop = aiMessages.scrollHeight;
 };
