@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
     <meta name="google-site-verification" content="mYA7e6FhmIQiuZusW36q8O5M4ny-_-x_Mvitqexth9A" />
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Jawad Digital Hub | Premier Agency</title>
@@ -14,7 +17,7 @@
     </style>
 </head>
 <body class="overflow-x-hidden">
-
+<canvas id="bg-3d" class="fixed top-0 left-0 -z-10"></canvas>
     <nav class="fixed top-0 w-full z-[100] px-6 py-5 md:px-12 flex justify-between items-center bg-black/80 backdrop-blur-lg border-b border-yellow-600/10">
         <a href="#home" class="flex items-center space-x-2 group">
             <div class="w-10 h-10 bg-gradient-to-tr from-yellow-700 to-yellow-400 flex items-center justify-center rounded-xl gold-glow group-hover:scale-110 transition-transform">
@@ -793,6 +796,49 @@ function toggleFAQ(button) {
 
     counters.forEach(counter => statsObserver.observe(counter));
 });
-    </script>
+        <script>
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ canvas: document.querySelector('#bg-3d'), alpha: true });
+
+    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    camera.position.setZ(30);
+
+    // Golden Orbs (Shapes)
+    const geometry = new THREE.IcosahedronGeometry(10, 1);
+    const material = new THREE.MeshStandardMaterial({ 
+        color: 0xD4AF37, // Metallic Gold
+        wireframe: true,
+        transparent: true,
+        opacity: 0.2
+    });
+    const orb = new THREE.Mesh(geometry, material);
+    scene.add(orb);
+
+    // Lighting
+    const pointLight = new THREE.PointLight(0xffffff);
+    pointLight.position.set(5, 5, 5);
+    const ambientLight = new THREE.AmbientLight(0xffffff);
+    scene.add(pointLight, ambientLight);
+
+    // Animation Loop
+    function animate() {
+        requestAnimationFrame(animate);
+        orb.rotation.x += 0.005;
+        orb.rotation.y += 0.005;
+        renderer.render(scene, camera);
+    }
+
+    // Scroll Animation
+    document.body.onscroll = () => {
+        const t = document.body.getBoundingClientRect().top;
+        orb.rotation.x += 0.05;
+        orb.rotation.y += 0.075;
+        camera.position.z = 30 + (t * 0.01);
+    };
+
+    animate();
+</script>
 </body>
 </html>
