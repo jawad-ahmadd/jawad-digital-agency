@@ -598,35 +598,7 @@
         </svg>
         <span class="absolute right-full mr-4 bg-white text-black px-4 py-2 rounded-lg text-xs font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">Chat with Jawad</span>
     </a>
-<div id="ai-agent-container" class="fixed bottom-32 right-8 z-[999] flex flex-col items-end gap-4">
-    <div id="ai-window" class="hidden w-80 md:w-96 bg-[#0a0a0a] border border-yellow-600/20 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col overflow-hidden animate-fade-in backdrop-blur-xl">
-        <div class="bg-gradient-to-r from-yellow-700 to-yellow-600 p-5 text-black font-black flex justify-between items-center text-[10px] tracking-[0.2em]">
-            <div class="flex items-center gap-2">
-                <span class="w-2 h-2 bg-black rounded-full animate-pulse"></span>
-                <span>JAWADHUB INTELLIGENCE</span>
-            </div>
-            <button id="ai-close-btn" class="text-xl hover:scale-125 transition-all">&times;</button>
-        </div>
-        <div id="ai-messages-box" class="h-80 overflow-y-auto p-5 space-y-4 text-[12px] text-gray-400 bg-black/50 scroll-smooth">
-            <div class="bg-white/5 border border-white/10 p-4 rounded-2xl border-l-4 border-l-yellow-600 font-medium">
-                Welcome to the elite circle. I am the **JAWADHUB** AI. Speak or type to discuss your project.
-            </div>
-        </div>
-        <div class="p-4 bg-black border-t border-white/5 flex flex-col gap-3">
-            <div class="flex gap-2">
-                <input type="text" id="ai-input-field" placeholder="Ask anything..." class="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-xs focus:outline-none focus:border-yellow-600/50 transition-all">
-                <button id="ai-mic-btn" class="bg-white/5 border border-white/10 text-yellow-600 p-3 rounded-xl hover:bg-yellow-600 hover:text-black transition-all">
-                    <i class="fas fa-microphone"></i>
-                </button>
-            </div>
-            <button id="ai-send-btn" class="w-full bg-yellow-600 text-black py-3 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-white transition-all">Process Inquiry</button>
-        </div>
-    </div>
 
-    <button id="ai-open-btn" class="w-16 h-16 bg-gradient-to-br from-yellow-500 to-yellow-700 rounded-2xl shadow-[0_10px_30px_rgba(202,138,4,0.3)] flex items-center justify-center hover:rotate-12 hover:scale-110 transition-all duration-500 border border-yellow-400/20 group">
-        <i class="fas fa-robot text-black text-2xl group-hover:scale-110 transition-transform"></i>
-    </button>
-</div>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     </main>
 
@@ -717,86 +689,7 @@
             document.getElementById('projectModal').classList.add('hidden');
             document.body.style.overflow = 'auto';
         }
-// --- JAWADHUB VOICE AI ENGINE ---
-const AI_KEY = "AIzaSyAW1_Vl7en1EToZPNNmwY0XbwWTg30sZdc"; // Restricted Key
-const AI_CONTEXT = "You are the Voice & Text Assistant for JAWADHUB. Lead Engineer: Jawad. Plans: Starter ($999), Pro ($1999), Enterprise. All have Lifetime Free Hosting. Keep answers professional and short.";
 
-const aiOpen = document.getElementById('ai-open-btn');
-const aiClose = document.getElementById('ai-close-btn');
-const aiWindow = document.getElementById('ai-window');
-const aiInput = document.getElementById('ai-input-field');
-const aiSend = document.getElementById('ai-send-btn');
-const aiMic = document.getElementById('ai-mic-btn');
-const aiMessages = document.getElementById('ai-messages-box');
-
-// 1. Voice In (Speech to Text) - Optimized
-const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-if (Recognition) {
-    const rec = new Recognition();
-    aiMic.onclick = () => { 
-        rec.start(); 
-        aiMic.classList.add('bg-red-600', 'animate-pulse'); 
-    };
-    rec.onresult = (e) => { 
-        aiInput.value = e.results[0][0].transcript; 
-        aiMic.classList.remove('bg-red-600', 'animate-pulse'); 
-        aiSend.click(); 
-    };
-}
-
-// 2. Voice Out (AI Speaking)
-function speakReply(text) {
-    const speech = new SpeechSynthesisUtterance(text);
-    speech.rate = 1; 
-    speech.pitch = 1;
-    window.speechSynthesis.speak(speech);
-}
-
-// 3. UI & API Logic - Fixed Error Handling
-aiOpen.onclick = () => aiWindow.classList.toggle('hidden');
-aiClose.onclick = () => aiWindow.classList.add('hidden');
-
-aiSend.onclick = async () => {
-    const val = aiInput.value.trim();
-    if (!val) return;
-
-    // Display User Message
-    aiMessages.innerHTML += `<div class="text-right mb-4"><span class="bg-yellow-600/10 text-yellow-500 p-3 rounded-2xl border border-yellow-600/10 inline-block text-[11px]">${val}</span></div>`;
-    aiInput.value = "";
-    
-    const loader = document.createElement('div');
-    loader.innerHTML = `<span class="text-gray-500 italic animate-pulse text-[10px]">Processing...</span>`;
-    aiMessages.appendChild(loader);
-    aiMessages.scrollTop = aiMessages.scrollHeight;
-
-    try {
-        const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${AI_KEY}`, {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({ contents: [{ parts: [{ text: AI_CONTEXT + "\nUser: " + val }] }] })
-        });
-
-        const data = await res.json();
-
-        // Check for API Restrictions
-        if (data.error) {
-            console.error("API Restriction Detected:", data.error.message);
-            throw new Error(data.error.message);
-        }
-
-        const reply = data.candidates[0].content.parts[0].text;
-        loader.remove();
-        aiMessages.innerHTML += `<div class="mb-4"><span class="bg-white/5 border border-white/10 p-3 rounded-2xl inline-block text-gray-300 text-[11px]">${reply}</span></div>`;
-        speakReply(reply); 
-
-    } catch (e) { 
-        console.error("Connection Issue:", e);
-        loader.innerHTML = `<span class="text-yellow-600/80 text-[10px] block mt-2">I'm currently updating my systems. Please reach out to Jawad via WhatsApp for immediate assistance.</span>`; 
-    }
-    aiMessages.scrollTop = aiMessages.scrollHeight;
-};
-
-aiInput.onkeypress = (e) => { if(e.key === 'Enter') aiSend.click(); };
 function toggleFAQ(button) {
     const answer = button.nextElementSibling;
     const icon = button.querySelector('.fa-chevron-down'); // Specific icon target
