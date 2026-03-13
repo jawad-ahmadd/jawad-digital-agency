@@ -11,6 +11,9 @@
         .gold-glow { box-shadow: 0 0 20px rgba(212, 175, 55, 0.2); }
         #blog-modal { transition: opacity 0.3s ease, visibility 0.3s ease; }
         .modal-content { transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); }
+        /* Smooth scrolling for modal */
+        #blog-modal .modal-content::-webkit-scrollbar { width: 5px; }
+        #blog-modal .modal-content::-webkit-scrollbar-thumb { background: #eab308; border-radius: 10px; }
     </style>
 </head>
 <body class="overflow-x-hidden">
@@ -57,23 +60,54 @@
         <header class="mb-20 text-center">
             <h1 class="text-6xl md:text-8xl font-black italic uppercase tracking-tighter">The <span class="text-yellow-500">Journal</span></h1>
         </header>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <div class="group cursor-pointer" onclick="openBlog('The 2026 Strategy', 'https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg', 'Our 2026 vision focuses on high-performance digital architecture and elite user experiences. We are pushing the boundaries of what is possible in the digital hub.')">
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            
+            <div class="group cursor-pointer" onclick="openBlog('ai_agent')">
                 <div class="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] mb-6 border border-white/10 shadow-2xl">
-                    <img src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=800" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700">
+                    <img src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700">
                 </div>
-                <h4 class="text-2xl font-black uppercase italic tracking-tight group-hover:text-yellow-500 transition-colors">The 2026 Strategy.</h4>
+                <h4 class="text-2xl font-black uppercase italic tracking-tight group-hover:text-yellow-500 transition-colors">How to Build a Custom AI Agent in 2026.</h4>
             </div>
+
+            <div class="group cursor-pointer" onclick="openBlog('shopify_tips')">
+                <div class="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] mb-6 border border-white/10 shadow-2xl">
+                    <img src="https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700">
+                </div>
+                <h4 class="text-2xl font-black uppercase italic tracking-tight group-hover:text-yellow-500 transition-colors">7 Shopify Conversion Killers to Fix Now.</h4>
+            </div>
+
+            <div class="group cursor-pointer" onclick="openBlog('uiux_impact')">
+                <div class="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] mb-6 border border-white/10 shadow-2xl">
+                    <img src="https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700">
+                </div>
+                <h4 class="text-2xl font-black uppercase italic tracking-tight group-hover:text-yellow-500 transition-colors">Why Your Design is Costing You Customers.</h4>
+            </div>
+
+            <div class="group cursor-pointer" onclick="openBlog('nextjs_seo')">
+                <div class="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] mb-6 border border-white/10 shadow-2xl">
+                    <img src="https://images.pexels.com/photos/11035380/pexels-photo-11035380.jpeg?auto=compress&cs=tinysrgb&w=800" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700">
+                </div>
+                <h4 class="text-2xl font-black uppercase italic tracking-tight group-hover:text-yellow-500 transition-colors">Next.js vs React: Best for SEO Ranking?</h4>
+            </div>
+
+            <div class="group cursor-pointer" onclick="openBlog('ai_shopify')">
+                <div class="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] mb-6 border border-white/10 shadow-2xl">
+                    <img src="https://images.pexels.com/photos/614117/pexels-photo-614117.jpeg?auto=compress&cs=tinysrgb&w=800" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700">
+                </div>
+                <h4 class="text-2xl font-black uppercase italic tracking-tight group-hover:text-yellow-500 transition-colors">Integrating AI with Shopify Stores.</h4>
+            </div>
+
         </div>
     </main>
 
     <div id="blog-modal" class="fixed inset-0 z-[200] flex items-center justify-center p-4 md:p-10 opacity-0 invisible bg-black/95 backdrop-blur-xl">
         <div class="modal-content relative bg-zinc-900 w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-[3rem] border border-white/10 shadow-2xl scale-90">
-            <button onclick="closeBlog()" class="absolute top-6 right-8 text-4xl text-yellow-500">&times;</button>
+            <button onclick="closeBlog()" class="absolute top-6 right-8 text-4xl text-yellow-500 z-50 hover:scale-110 transition-transform">&times;</button>
             <div class="p-8 md:p-16">
-                <img id="modal-img" src="" class="w-full h-72 md:h-96 object-cover rounded-[2rem] mb-10 border border-white/10">
+                <img id="modal-img" src="" class="w-full h-72 md:h-96 object-cover rounded-[2rem] mb-10 border border-white/10 shadow-xl">
                 <h2 id="modal-title" class="text-4xl md:text-6xl font-black uppercase italic tracking-tighter mb-8 text-yellow-500"></h2>
-                <div id="modal-story" class="text-gray-300 text-lg leading-relaxed"></div>
+                <div id="modal-story" class="text-gray-300 text-lg leading-relaxed space-y-4"></div>
             </div>
         </div>
     </div>
@@ -121,26 +155,66 @@
     </a>
 
     <script>
-        // Toggle Logic
+        // Drawer Logic
         const openBtn = document.getElementById('open-menu');
         const closeBtn = document.getElementById('close-menu');
         const sideDrawer = document.getElementById('side-drawer');
         openBtn.onclick = () => sideDrawer.classList.remove('translate-x-full');
         closeBtn.onclick = () => sideDrawer.classList.add('translate-x-full');
 
+        // Content Data
+        const blogData = {
+            'ai_agent': {
+                title: "How to Build a Custom AI Agent in 2026",
+                img: "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg",
+                story: "<p>In 2026, manual work is a choice, not a necessity. A custom AI Agent acts as an intelligent layer between your business and your customers. Unlike basic bots, these agents use RAG (Retrieval-Augmented Generation) to learn your specific business data.</p><p>By integrating GPT-4 or Claude with your CRM, you can automate 80% of support and lead generation. This isn't just automation; it's a digital workforce that never sleeps and scales infinitely.</p>"
+            },
+            'shopify_tips': {
+                title: "7 Shopify Conversion Killers to Fix Now",
+                img: "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg",
+                story: "<p>Traffic is useless without conversions. The biggest killers in 2026 are slow page loads, forced account creation, and poor mobile responsiveness. If your store takes more than 2 seconds to load, you're losing 40% of your audience.</p><p>Fix your store by optimizing images, using 'One-Page Checkout', and ensuring your 'Add to Cart' button is always visible. We focus on Liquid optimization to keep Shopify stores lightning fast and profit-ready.</p>"
+            },
+            'uiux_impact': {
+                title: "Why Your Design is Costing You Customers",
+                img: "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg",
+                story: "<p>A website that looks good but functions poorly is a business failure. User Psychology is the secret weapon of high-converting brands. If your navigation is confusing, users feel frustrated and leave within seconds.</p><p>Good UI/UX design guides the eye to the call-to-action (CTA). By implementing 'F-Pattern' layouts and minimalist navigation, you can increase time-on-site by 150%. Stop decorating and start designing for specific business results.</p>"
+            },
+            'nextjs_seo': {
+                title: "Next.js vs React: Best for SEO Ranking?",
+                img: "https://images.pexels.com/photos/11035380/pexels-photo-11035380.jpeg",
+                story: "<p>While React is great for apps, Next.js wins the SEO battle every time. The secret lies in Server-Side Rendering (SSR). In Next.js, Google's crawlers see your content immediately because the page is rendered on the server.</p><p>With standard React, crawlers often see a blank page before JavaScript loads. For businesses wanting to rank on the first page of Google, Next.js provides built-in image optimization and lightning-fast Core Web Vitals out of the box.</p>"
+            },
+            'ai_shopify': {
+                title: "Integrating AI with Shopify Stores",
+                img: "https://images.pexels.com/photos/614117/pexels-photo-614117.jpeg",
+                story: "<p>The marriage of AI and Shopify is creating a new era of 'Personalized Shopping'. Imagine a store that changes its layout based on who is looking at it. By using AI-driven recommendation engines, Shopify owners are seeing a 30% increase in order value.</p><p>From AI-generated product descriptions to predictive inventory management that tells you what will sell next month, the future of e-commerce is autonomous and highly intelligent.</p>"
+            }
+        };
+
         // Popup Logic
         const modal = document.getElementById('blog-modal');
-        function openBlog(title, img, story) {
-            document.getElementById('modal-title').innerText = title;
-            document.getElementById('modal-img').src = img;
-            document.getElementById('modal-story').innerText = story;
-            modal.classList.remove('invisible', 'opacity-0');
-            modal.querySelector('.modal-content').classList.remove('scale-90');
+        function openBlog(key) {
+            const data = blogData[key];
+            if(data) {
+                document.getElementById('modal-title').innerText = data.title;
+                document.getElementById('modal-img').src = data.img;
+                document.getElementById('modal-story').innerHTML = data.story;
+                
+                modal.classList.remove('invisible', 'opacity-0');
+                modal.querySelector('.modal-content').classList.remove('scale-90');
+                document.body.style.overflow = 'hidden'; // Stop scrolling background
+            }
         }
         function closeBlog() {
             modal.classList.add('invisible', 'opacity-0');
             modal.querySelector('.modal-content').classList.add('scale-90');
+            document.body.style.overflow = 'auto'; // Enable scrolling
         }
+
+        // Close modal on outside click
+        modal.onclick = (e) => {
+            if (e.target === modal) closeBlog();
+        };
     </script>
 </body>
 </html>
