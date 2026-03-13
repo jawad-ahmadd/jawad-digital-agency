@@ -641,47 +641,73 @@
             'p4': { title: "Modern Identity System", sub: "Brand Engineering", desc: "Crafted a minimalist yet powerful brand identity system that translates across digital and physical touchpoints. Focused on timeless aesthetic.", tech: ["Branding", "Vector Art", "Typography"], img: "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&q=80&w=800" }
         };
 
-        const serviceDetails = {
-            'uiux': {
-                title: "UI/UX Design", tagline: "The Human-Centric Blueprint",
-                steps: [
-                    { n: "01", t: "Stakeholder Interviews", d: "Conducting deep sessions to align with your business vision and end-user goals." },
-                    { n: "02", t: "User Psychology", d: "Studying target audience mental models to craft a strategic design foundation." },
-                    { n: "03", t: "Information Architecture", d: "Structuring a logical content hierarchy for effortless navigation and flow." },
-                    { n: "04", t: "Low-Fidelity Wireframing", d: "Building the skeletal framework focused on core functionality and usability." },
-                    { n: "05", t: "Moodboarding", d: "Defining a visual language including colors and typography that match your brand DNA." },
-                    { n: "06", t: "High-Fidelity Design", d: "Crafting a luxury, pixel-perfect interface optimized for all screen dimensions." },
-                    { n: "07", t: "Interactive Prototyping", d: "Delivering a clickable model to experience the app feel before development." },
-                    { n: "08", t: "Design Handoff", d: "Providing comprehensive assets and documentation for precise engineering." }
-                ]
-            },
-            'engineering': {
-                title: "Web Engineering", tagline: "Performance & Scalability Roadmap",
-                steps: [
-                    { n: "01", t: "Technical Discovery", d: "Analyzing traffic load, security protocols, and system requirements." },
-                    { n: "02", t: "Backend Architecture", d: "Designing a robust server-side structure for high-speed data management." },
-                    { n: "03", t: "Frontend Development", d: "Coding a responsive, modern interface using Next.js and React frameworks." },
-                    { n: "04", t: "API Integration", d: "Seamlessly connecting external services and complex databases." },
-                    { n: "05", t: "Speed Optimization", d: "Implementing code minification and lazy-loading for blink-of-an-eye speeds." },
-                    { n: "06", t: "Cross-Browser Testing", d: "Ensuring 100% stability across Chrome, Safari, and modern browsers." },
-                    { n: "07", t: "Security Hardening", d: "Deploying SSL encryption and firewall protection to secure user data." },
-                    { n: "08", t: "CI/CD Deployment", d: "Setting up automated pipelines for seamless, zero-downtime updates." }
-                ]
-            },
-            'strategy': {
-                title: "Digital Strategy", tagline: "Growth & Authority Roadmap",
-                steps: [
-                    { n: "01", t: "Market & Competitor Audit", d: "Identifying market gaps and analyzing competitor weaknesses." },
-                    { n: "02", t: "Brand Positioning", d: "Establishing your brand as a leading authority in your specific industry." },
-                    { n: "03", t: "SEO & Keyword Mapping", d: "Targeting high-intent search terms to drive organic traffic growth." },
-                    { n: "04", t: "Conversion Funnel", d: "Designing strategic user paths to maximize lead generation and sales." },
-                    { n: "05", t: "Content Strategy", d: "Crafting compelling brand messaging that resonates with your audience." },
-                    { n: "06", t: "Analytics Tracking", d: "Monitoring real-time user behavior to make data-driven improvements." },
-                    { n: "07", t: "A/B Testing", d: "Experimenting with multiple strategies to finalize the highest-performing route." },
-                    { n: "08", t: "Scale & Automation", d: "Implementing automated systems to maintain consistent business growth." }
-                ]
-            }
-        };
+       const serviceDetails = {
+    'uiux': {
+        title: "UI/UX Design", tagline: "The Human-Centric Blueprint",
+        steps: [
+            { n: "01", t: "Stakeholder Interviews", d: "Conducting deep sessions to align with your business vision and end-user goals." },
+            { n: "02", t: "User Psychology", d: "Studying target audience mental models to craft a strategic design foundation." },
+            { n: "03", t: "Information Architecture", d: "Structuring a logical content hierarchy for effortless navigation and flow." },
+            { n: "04", t: "Low-Fidelity Wireframing", d: "Building the skeletal framework focused on core functionality and usability." },
+            { n: "05", t: "Moodboarding", d: "Defining a visual language including colors and typography that match your brand DNA." },
+            { n: "06", t: "High-Fidelity Design", d: "Crafting a luxury, pixel-perfect interface optimized for all screen dimensions." },
+            { n: "07", t: "Interactive Prototyping", d: "Delivering a clickable model to experience the app feel before development." },
+            { n: "08", t: "Design Handoff", d: "Providing comprehensive assets and documentation for precise engineering." }
+        ]
+    },
+    'engineering': {
+        title: "Web Engineering", tagline: "Performance & Scalability Roadmap",
+        steps: [
+            { n: "01", t: "Technical Discovery", d: "Analyzing traffic load, security protocols, and system requirements." },
+            { n: "02", t: "Backend Architecture", d: "Designing a robust server-side structure for high-speed data management." },
+            { n: "03", t: "Frontend Development", d: "Coding a responsive, modern interface using Next.js and React frameworks." },
+            { n: "04", t: "API Integration", d: "Seamlessly connecting external services and complex databases." },
+            { n: "05", t: "Speed Optimization", d: "Implementing code minification and lazy-loading for blink-of-an-eye speeds." },
+            { n: "06", t: "Cross-Browser Testing", d: "Ensuring 100% stability across Chrome, Safari, and modern browsers." },
+            { n: "07", t: "Security Hardening", d: "Deploying SSL encryption and firewall protection to secure user data." },
+            { n: "08", t: "CI/CD Deployment", d: "Setting up automated pipelines for seamless, zero-downtime updates." }
+        ]
+    },
+    'ai': {
+        title: "AI Agent Development", tagline: "Intelligence & Automation Roadmap",
+        steps: [
+            { n: "01", t: "Workflow Analysis", d: "Identifying repetitive tasks and manual bottlenecks suitable for AI automation." },
+            { n: "02", t: "LLM Selection", d: "Choosing the right model (GPT-4, Claude, or Llama) based on your specific needs." },
+            { n: "03", t: "Prompt Engineering", d: "Developing sophisticated system prompts to ensure accurate and safe AI behavior." },
+            { n: "04", t: "RAG Integration", d: "Connecting AI to your private data for precise, context-aware responses." },
+            { n: "05", t: "API Development", d: "Building custom endpoints to bridge AI capabilities with your existing software." },
+            { n: "06", t: "Natural Language Processing", d: "Fine-tuning agents to understand human intent and industry-specific jargon." },
+            { n: "07", t: "Agentic Tools", d: "Enabling agents to perform real actions like booking, emailing, or data entry." },
+            { n: "08", t: "Performance Monitoring", d: "Setting up feedback loops to continuously improve AI accuracy over time." }
+        ]
+    },
+    'shopify': {
+        title: "Shopify Development", tagline: "E-commerce Dominance Roadmap",
+        steps: [
+            { n: "01", t: "Store Architecture", d: "Planning collection hierarchies and product filtering for a smooth shopping journey." },
+            { n: "02", t: "Liquid Customization", d: "Deep-coding Shopify Liquid themes to break away from generic templates." },
+            { n: "03", t: "App Ecosystem", d: "Selecting and configuring essential apps for reviews, upsells, and loyalty." },
+            { n: "04", t: "Checkout Optimization", d: "Streamlining the payment process to minimize cart abandonment rates." },
+            { n: "05", t: "Inventory Sync", d: "Automating stock updates and connecting third-party fulfillment logistics." },
+            { n: "06", t: "Mobile Commerce", d: "Ensuring the store is lightning-fast and perfectly responsive on smartphones." },
+            { n: "07", t: "SEO for Products", d: "Implementing schema markup and metadata to rank your products on Google." },
+            { n: "08", t: "Analytics Setup", d: "Configuring GA4 and Meta Pixel to track every dollar spent and earned." }
+        ]
+    },
+    'strategy': {
+        title: "Digital Strategy", tagline: "Growth & Authority Roadmap",
+        steps: [
+            { n: "01", t: "Market & Competitor Audit", d: "Identifying market gaps and analyzing competitor weaknesses." },
+            { n: "02", t: "Brand Positioning", d: "Establishing your brand as a leading authority in your specific industry." },
+            { n: "03", t: "SEO & Keyword Mapping", d: "Targeting high-intent search terms to drive organic traffic growth." },
+            { n: "04", t: "Conversion Funnel", d: "Designing strategic user paths to maximize lead generation and sales." },
+            { n: "05", t: "Content Strategy", d: "Crafting compelling brand messaging that resonates with your audience." },
+            { n: "06", t: "Analytics Tracking", d: "Monitoring real-time user behavior to make data-driven improvements." },
+            { n: "07", t: "A/B Testing", d: "Experimenting with multiple strategies to finalize the highest-performing route." },
+            { n: "08", t: "Scale & Automation", d: "Implementing automated systems to maintain consistent business growth." }
+        ]
+    }
+};
 
         // 3. MODAL CONTROLS
         function openProject(id) {
