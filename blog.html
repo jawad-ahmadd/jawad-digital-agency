@@ -24,8 +24,8 @@
         .fade-in { animation: fadeIn 0.6s ease-out forwards; opacity: 0; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Custom drawer transition */
-        #side-drawer { transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        /* Fast drawer transition for opening */
+        #side-drawer { transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
     </style>
 </head>
 <body class="overflow-x-hidden">
@@ -82,8 +82,7 @@
             <p class="text-gray-500 mt-4 tracking-widest uppercase text-[10px]">Problem-Solving Insights for the 2026 Digital Era</p>
         </header>
 
-        <div id="blog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            </div>
+        <div id="blog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"></div>
     </main>
 
     <footer class="bg-black border-t border-white/5 pt-24 pb-12">
@@ -130,25 +129,35 @@
     </a>
 
     <script>
-        // Drawer Toggle Logic
+        // --- UPDATED FAST NAVIGATION LOGIC ---
         const openBtn = document.getElementById('open-menu');
         const closeBtn = document.getElementById('close-menu');
         const sideDrawer = document.getElementById('side-drawer');
         const mobileLinks = document.querySelectorAll('.mobile-nav-link');
 
-        function closeDrawer() {
+        // Opening is smooth
+        openBtn.onclick = () => {
+            sideDrawer.style.transition = "transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)";
+            sideDrawer.classList.remove('translate-x-full');
+        };
+
+        // Closing via X is smooth
+        closeBtn.onclick = () => {
             sideDrawer.classList.add('translate-x-full');
-        }
+        };
 
-        openBtn.onclick = () => sideDrawer.classList.remove('translate-x-full');
-        closeBtn.onclick = closeDrawer;
-
-        // Close drawer immediately on link click
+        // NAVIGATION: Instant action on click
         mobileLinks.forEach(link => {
-            link.onclick = () => closeDrawer();
+            link.addEventListener('click', function(e) {
+                // 1. Remove transition for instant hide
+                sideDrawer.style.transition = "none";
+                sideDrawer.classList.add('translate-x-full');
+                
+                // 2. Allow normal link navigation immediately
+            });
         });
 
-        // 17 Topics
+        // --- BLOG GRID INJECTION ---
         const blogs = [
             { id: 'ai-agents', title: "How to Build a Custom AI Agent in 2026", img: "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg" },
             { id: 'shopify-conversion', title: "7 Shopify Conversion Killers to Fix Now", img: "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg" },
