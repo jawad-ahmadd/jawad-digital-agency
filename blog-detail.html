@@ -104,8 +104,71 @@
             });
         });
 
-        // CONTENT INJECTION LOGIC (Coming in Step 2)
-        // Yahan hum article ka data fetch kar ke title, image aur HTML content inject karenge.
+        // 1. Get the Blog ID from URL (e.g., blog-detail.html?id=ai-agents)
+const urlParams = new URLSearchParams(window.location.search);
+const blogId = urlParams.get('id');
+
+// 2. The Content Database (Article #1)
+const blogData = {
+    'ai-agents': {
+        title: "How to Build a Custom AI Agent in 2026",
+        category: "AI & Automation",
+        image: "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg",
+        content: `
+            <p class="font-bold text-yellow-500 text-xl italic mb-8">In 2026, AI is no longer just a chatbot; it's an autonomous worker. If you aren't building custom agents, you're leaving 40% efficiency on the table.</p>
+            
+            <p>The transition from generative AI to <strong>Agentic AI</strong> has officially redefined the digital landscape. A custom AI agent isn't just "smart"—it's integrated, decisive, and capable of executing complex workflows without human intervention. In this comprehensive guide, we'll break down the architecture of a high-performance 2026 AI agent.</p>
+
+            <h2>1. The Evolution: Chatbots vs. Autonomous Agents</h2>
+            <p>Before we dive into the "how," we must understand the "what." Unlike the LLMs of 2023, modern agents possess three critical layers:</p>
+            <ul>
+                <li><strong>Perception Layer:</strong> How the agent "sees" data (APIs, Webhooks, Real-time vision).</li>
+                <li><strong>Reasoning Layer:</strong> Using Chain-of-Thought (CoT) processing to break down tasks.</li>
+                <li><strong>Action Layer:</strong> The ability to execute code, buy assets, or update a Shopify backend.</li>
+            </ul>
+
+            <h2>2. Architecture: Defining the "Brain"</h2>
+            <p>To build a robust agent, you need a foundation. In 2026, the industry standard has shifted toward specialized smaller models (SLMs) rather than massive generalist ones. This reduces latency and operational costs.</p>
+            <h3>Choosing Your Engine</h3>
+            <p>Depending on your goal, you might choose GPT-5 Turbo for complex logic or a fine-tuned Llama-4 for data privacy. The key is "Function Calling"—ensuring your model can interact with external tools smoothly.</p>
+
+            <h2>3. The Development Workflow (Step-by-Step)</h2>
+            <h3>Step A: Environment Setup</h3>
+            <p>Utilize Python 3.12+ or Node.js 24 environments. You'll need frameworks like LangGraph or CrewAI to manage multi-agent orchestration. A single agent is good, but a <strong>swarm of agents</strong> (The Hive Mind) is unstoppable.</p>
+            
+            <h3>Step B: Knowledge Retrieval (RAG 2.0)</h3>
+            <p>Standard RAG is dead. In 2026, we use <strong>Graph-RAG</strong>. It connects data points like a spiderweb rather than a simple list, allowing your agent to understand context and relationships in your business data.</p>
+
+            <h2>4. Security and Ethical Guardrails</h2>
+            <p>With great power comes great liability. A custom agent that can access your bank account or customer database must have "Prompt Injection Protection." We implement a dual-layer validation system where a "Supervisor Agent" audits every action taken by the "Worker Agent."</p>
+
+            <h2>5. Deployment and Scaling</h2>
+            <p>Deploying via Docker containers on AWS or Vercel Edge functions ensures your agent is always live. Monitoring tools now use AI themselves to alert you if your agent starts hallucinating or its "logic loop" breaks.</p>
+
+            <h2>Summary: The Competitive Edge</h2>
+            <p>Building a custom AI agent is the ultimate leverage. It allows a solopreneur to function like a 10-person agency. By following this roadmap, you are not just keeping up with technology; you are commanding it.</p>
+
+            <div class="bg-yellow-500/10 p-8 rounded-3xl border border-yellow-500/20 mt-12">
+                <h4 class="text-white font-black uppercase text-lg mb-4 italic">Quick FAQ</h4>
+                <p class="text-sm"><strong>Q: How long does it take to build?</strong><br>A: A basic MVP takes 48 hours; a fully integrated enterprise agent takes 4-6 weeks.</p>
+                <p class="text-sm"><strong>Q: Do I need a GPU?</strong><br>A: No, in 2026, cloud-based serverless inference handles everything.</p>
+            </div>
+        `
+    }
+};
+
+// 3. Render the Content
+if (blogId && blogData[blogId]) {
+    const data = blogData[blogId];
+    document.getElementById('page-title').innerText = data.title + " | Jawad Hub";
+    document.getElementById('category-name').innerText = data.category;
+    document.getElementById('blog-title').innerText = data.title;
+    document.getElementById('blog-image').src = data.image;
+    document.getElementById('blog-content').innerHTML = data.content;
+} else {
+    // If no ID found, go back to blog list
+    // window.location.href = 'blog.html';
+}
     </script>
 </body>
 </html>
