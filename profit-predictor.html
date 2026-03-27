@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profit Predictor | Jawad Digital Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: black; color: white; margin: 0; }
+        .gold-glow { box-shadow: 0 0 20px rgba(212, 175, 55, 0.2); }
+        .fade-in { animation: fadeIn 0.6s ease-out forwards; opacity: 0; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        #side-drawer { transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <nav class="fixed top-0 w-full z-[100] px-6 py-5 md:px-12 flex justify-between items-center bg-black/80 backdrop-blur-lg border-b border-yellow-600/10">
+        <a href="index.html" class="flex items-center space-x-2 group">
+            <div class="w-10 h-10 bg-gradient-to-tr from-yellow-700 to-yellow-400 flex items-center justify-center rounded-xl gold-glow">
+                <span class="text-black font-black text-lg">J</span>
+            </div>
+            <div class="text-xl font-black tracking-tighter uppercase text-white">JAWAD<span class="text-yellow-500">HUB</span></div>
+        </a>
+        <div class="hidden md:flex flex-1 justify-center space-x-10 text-[10px] font-bold uppercase tracking-[0.3em] text-gray-400">
+            <a href="index.html#home" class="hover:text-yellow-500 transition-colors">Home</a>
+            <a href="index.html#about" class="hover:text-yellow-500 transition-colors">About</a>
+            <a href="index.html#services" class="hover:text-yellow-500 transition-colors">Services</a>
+            <a href="index.html#pricing" class="hover:text-yellow-500 transition-colors">Pricing</a>
+            <a href="index.html#portfolio" class="hover:text-yellow-500 transition-colors">Portfolio</a>
+            <a href="blog.html" class="hover:text-yellow-500 transition-colors">Blog</a>
+            <a href="contact.html" class="text-yellow-500 hover:text-white transition-colors">Contact Us</a>
+        </div>
+        <button id="open-menu" class="md:hidden text-yellow-500 focus:outline-none p-1">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 8h16M4 16h16"></path></svg>
+        </button>
+    </nav>
+
+    <div id="side-drawer" class="fixed inset-0 bg-black z-[110] transform translate-x-full md:hidden flex flex-col">
+        <div class="p-8 flex justify-between items-center border-b border-yellow-600/10 pb-6 mb-12">
+            <span class="text-white font-black text-2xl tracking-tighter">JAWAD<span class="text-yellow-500">HUB</span></span>
+            <button id="close-menu" class="text-yellow-500 focus:outline-none p-1">
+                <svg class="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <nav class="flex flex-col items-center space-y-10 text-white text-3xl font-bold uppercase tracking-tighter flex-grow px-8">
+            <a href="index.html#home" class="mobile-nav-link hover:text-yellow-500">Home</a>
+            <a href="index.html#about" class="mobile-nav-link hover:text-yellow-500">About</a>
+            <a href="index.html#services" class="mobile-nav-link hover:text-yellow-500">Services</a>
+            <a href="index.html#pricing" class="mobile-nav-link hover:text-yellow-500">Pricing</a>
+            <a href="index.html#portfolio" class="mobile-nav-link hover:text-yellow-500">Portfolio</a>
+            <a href="blog.html" class="mobile-nav-link hover:text-yellow-500">Blog</a>
+            <a href="contact.html" class="mobile-nav-link text-yellow-500 font-black italic">Contact Us</a>
+        </nav>
+    </div>
+
+    <main class="pt-40 pb-20 px-6 max-w-5xl mx-auto min-h-screen fade-in">
+        <header class="mb-16 text-center">
+            <h1 class="text-5xl md:text-7xl font-black italic uppercase tracking-tighter leading-none">
+                Profit <span class="text-yellow-500">Predictor</span>
+            </h1>
+            <p class="text-gray-500 mt-4 tracking-widest uppercase text-[10px]">Global E-commerce ROI Calculator for 2026</p>
+        </header>
+
+        <div class="bg-zinc-900/40 border border-white/5 rounded-[2.5rem] p-8 md:p-12 gold-glow backdrop-blur-sm">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="space-y-8">
+                    <div class="relative group">
+                        <label class="block text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 mb-2 group-focus-within:text-yellow-500 transition-colors">Sale Price ($)</label>
+                        <input type="number" id="salePrice" placeholder="0.00" class="w-full bg-transparent border-b border-white/10 py-3 text-2xl font-bold outline-none focus:border-yellow-500 transition-all placeholder:text-zinc-800">
+                    </div>
+                    <div class="relative group">
+                        <label class="block text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 mb-2 group-focus-within:text-yellow-500 transition-colors">Product Cost / COGS ($)</label>
+                        <input type="number" id="cogs" placeholder="0.00" class="w-full bg-transparent border-b border-white/10 py-3 text-2xl font-bold outline-none focus:border-yellow-500 transition-all placeholder:text-zinc-800">
+                    </div>
+                    <div class="relative group">
+                        <label class="block text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 mb-2 group-focus-within:text-yellow-500 transition-colors">Ad Spend / CPA ($)</label>
+                        <input type="number" id="adSpend" placeholder="0.00" class="w-full bg-transparent border-b border-white/10 py-3 text-2xl font-bold outline-none focus:border-yellow-500 transition-all placeholder:text-zinc-800">
+                    </div>
+
+                    <details class="group bg-white/5 rounded-2xl overflow-hidden">
+                        <summary class="list-none p-4 flex justify-between items-center cursor-pointer hover:bg-white/10 transition-all">
+                            <span class="text-[9px] font-black uppercase tracking-widest text-gray-400">Intl. Fees & Shipping</span>
+                            <span class="text-yellow-500 text-xs">▼</span>
+                        </summary>
+                        <div class="p-6 space-y-6 border-t border-white/5">
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="text-[9px] font-black text-gray-500 uppercase tracking-tighter">Gateway %</label>
+                                    <input type="number" id="gateFee" value="2.9" class="w-full bg-black/50 border border-white/5 rounded-lg p-2 mt-1 text-sm outline-none focus:border-yellow-500">
+                                </div>
+                                <div>
+                                    <label class="text-[9px] font-black text-gray-500 uppercase tracking-tighter">Misc/Ship ($)</label>
+                                    <input type="number" id="shipping" value="5.00" class="w-full bg-black/50 border border-white/5 rounded-lg p-2 mt-1 text-sm outline-none focus:border-yellow-500">
+                                </div>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="bg-gradient-to-br from-yellow-600 to-yellow-400 rounded-[2rem] p-10 text-black flex flex-col justify-between items-center text-center shadow-2xl relative overflow-hidden">
+                    <div class="relative z-10">
+                        <span class="font-black uppercase text-[10px] tracking-[0.3em] opacity-60 mb-4 block">Net Profit Per Unit</span>
+                        <h2 id="netProfit" class="text-6xl md:text-7xl font-black tracking-tighter mb-2">$0.00</h2>
+                        <div id="marginStatus" class="inline-block px-4 py-1 bg-black text-yellow-500 text-[10px] font-black uppercase rounded-full tracking-widest">Awaiting Data</div>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-8 w-full mt-12 pt-8 border-t border-black/10 relative z-10">
+                        <div>
+                            <span class="block text-[9px] font-black uppercase opacity-60">ROI %</span>
+                            <span id="roiPercent" class="text-3xl font-black tracking-tighter">0%</span>
+                        </div>
+                        <div>
+                            <span class="block text-[9px] font-black uppercase opacity-60">Break-Even</span>
+                            <span id="breakEven" class="text-3xl font-black tracking-tighter">$0</span>
+                        </div>
+                    </div>
+                    <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-3xl"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-black border-t border-white/5 pt-24 pb-12">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
+                <div class="space-y-6">
+                    <div class="text-2xl font-black tracking-tighter uppercase text-white">JAWAD<span class="text-yellow-500">HUB</span></div>
+                    <p class="text-gray-500 text-sm leading-relaxed max-w-[250px]">Elevating digital standards through elite design and high-performance engineering.</p>
+                </div>
+                <div class="space-y-6 text-left">
+                    <h4 class="text-white font-black uppercase text-[10px] tracking-[0.3em]">Support</h4>
+                    <ul class="space-y-4 text-gray-500 text-sm font-medium">
+                        <li><a href="privacy.html" class="hover:text-yellow-500">Privacy Policy</a></li>
+                        <li><a href="shipping.html" class="hover:text-yellow-500">Shipping Policy</a></li>
+                        <li><a href="terms.html" class="hover:text-yellow-500">Terms & Conditions</a></li>
+                        <li><a href="refund.html" class="hover:text-yellow-500">Refund & Exchange</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-6">
+                    <h4 class="text-white font-black uppercase text-[10px] tracking-[0.3em]">Follow Us</h4>
+                    <a href="https://www.linkedin.com/in/jawad-ahmad-62251b388/" target="_blank" class="block group">
+                        <svg class="w-6 h-6 text-gray-500 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+                </div>
+                <div class="space-y-6">
+                    <h4 class="text-white font-black uppercase text-[10px] tracking-[0.3em]">Subscribe</h4>
+                    <div class="relative w-full max-w-[260px]">
+                        <input type="email" placeholder="Your Email" class="w-full bg-transparent border-b border-white/20 pb-2 text-sm text-gray-400 focus:outline-none focus:border-yellow-500">
+                        <button class="absolute right-0 top-0 text-yellow-500 text-xl hover:translate-x-1 transition-transform">→</button>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center space-y-4">
+                <p class="text-[9px] uppercase tracking-[0.4em] text-gray-600 font-bold">© 2026 JAWAD DIGITAL HUB. ALL RIGHTS RESERVED.</p>
+                <p class="text-[9px] uppercase tracking-[0.4em] text-gray-600 font-bold cursor-pointer hover:text-white">CONTACT INFORMATION</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // MOBILE MENU LOGIC (Exact from your code)
+        const openBtn = document.getElementById('open-menu');
+        const closeBtn = document.getElementById('close-menu');
+        const sideDrawer = document.getElementById('side-drawer');
+        openBtn.onclick = () => sideDrawer.classList.remove('translate-x-full');
+        closeBtn.onclick = () => sideDrawer.classList.add('translate-x-full');
+
+        // CALCULATOR LOGIC
+        const inputs = ['salePrice', 'cogs', 'adSpend', 'gateFee', 'shipping'];
+        inputs.forEach(id => {
+            document.getElementById(id).addEventListener('input', calculateProfit);
+        });
+
+        function calculateProfit() {
+            const salePrice = parseFloat(document.getElementById('salePrice').value) || 0;
+            const cogs = parseFloat(document.getElementById('cogs').value) || 0;
+            const adSpend = parseFloat(document.getElementById('adSpend').value) || 0;
+            const gatePercent = parseFloat(document.getElementById('gateFee').value) || 0;
+            const shipping = parseFloat(document.getElementById('shipping').value) || 0;
+
+            const gateFee = salePrice * (gatePercent / 100);
+            const totalCost = cogs + adSpend + gateFee + shipping;
+            const netProfit = salePrice - totalCost;
+            const roi = totalCost > 0 ? (netProfit / totalCost) * 100 : 0;
+            const breakEvenAdSpend = salePrice - cogs - gateFee - shipping;
+
+            // Update UI
+            document.getElementById('netProfit').innerText = `$${netProfit.toFixed(2)}`;
+            document.getElementById('roiPercent').innerText = `${roi.toFixed(0)}%`;
+            document.getElementById('breakEven').innerText = `$${Math.max(0, breakEvenAdSpend).toFixed(2)}`;
+
+            const status = document.getElementById('marginStatus');
+            if (netProfit > 0) {
+                status.innerText = "Profitable Strategy";
+                status.className = "inline-block px-4 py-1 bg-black text-green-500 text-[10px] font-black uppercase rounded-full tracking-widest";
+            } else if (netProfit < 0) {
+                status.innerText = "Losing Money";
+                status.className = "inline-block px-4 py-1 bg-black text-red-500 text-[10px] font-black uppercase rounded-full tracking-widest";
+            } else {
+                status.innerText = "Break Even";
+                status.className = "inline-block px-4 py-1 bg-black text-yellow-500 text-[10px] font-black uppercase rounded-full tracking-widest";
+            }
+        }
+    </script>
+</body>
+</html>
