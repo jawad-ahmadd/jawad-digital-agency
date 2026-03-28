@@ -132,28 +132,29 @@
             tag: 'Finance'
         },
         {
-            filename: 'ad-budget-planner.html', // Fixed: As per your screenshot
+            filename: 'ad-budget-planner.html',
             name: 'Budget Planner',
             desc: 'Scale your ad spend with precision projections.',
             tag: 'Scaling'
         },
         {
-            filename: 'ad-copy-generator.html', // Fixed: As per your screenshot
+            filename: 'ad-copy-generator.html',
             name: 'SEO & Copy AI',
             desc: 'Generate ranking strategies and high-converting copy.',
             tag: 'Marketing'
         }
     ];
 
-    // Current page ka filename get karne ka behtar tareeka
-    const currentPath = window.location.pathname.split("/").pop() || 'index.html';
+    // Current page ka filename nikalne ka sab se asaan tareeka
+    const currentFile = window.location.href.split('/').pop();
     const navContainer = document.getElementById('tools-nav-container');
 
     if (navContainer) {
         navContainer.innerHTML = ''; 
+        
         toolsList.forEach(tool => {
-            // Agar active page tool ke filename ke barabar nahi hai, to show karein
-            if (currentPath.toLowerCase() !== tool.filename.toLowerCase()) {
+            // Agar current file tool ki filename nahi hai, to card dikhao
+            if (currentFile !== tool.filename) {
                 const toolCard = `
                     <a href="${tool.filename}" class="group block bg-zinc-900/40 border border-white/5 p-8 rounded-[2rem] hover:border-yellow-500/50 transition-all duration-500 gold-glow">
                         <div class="flex justify-between items-start mb-6">
